@@ -3,4 +3,6 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'action_mailer'
 
-ActionMailer::Base.send :include, SendGrid
+ActiveSupport.on_load(:action_mailer) do
+  ActionMailer::Base.send :include, SendGrid
+end
