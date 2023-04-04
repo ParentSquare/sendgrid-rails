@@ -20,7 +20,7 @@ describe Mailer do
       header = Mailer.email_with_multiple_recipients(emails).deliver.header.to_s
       header.lines.each do |line|
         unless line.starts_with?('Message-ID:') # May be longer depending on your test machine
-          line.should have_at_most(72).characters
+          line.size.should be <= 72
         end
       end
     end
